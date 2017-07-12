@@ -3,7 +3,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
-const { CSSModules, eslint } = require('./config');
+const { CSSModules } = require('./config');
 
 module.exports = {
   name: 'server',
@@ -26,8 +26,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         enforce: 'pre',
-        exclude: /node_modules/,
-        loader: 'eslint',
+        exclude: /node_modules/
       },
       {
         test: /\.jsx?$/,
@@ -62,12 +61,6 @@ module.exports = {
   },
   plugins: [
     // Setup global variables for server
-    new webpack.LoaderOptionsPlugin({
-      options: {
-        // Javascript lint
-        eslint: { failOnError: eslint },
-      },
-    }),
     new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 1 }),
   ],
   // Where to resolve our loaders

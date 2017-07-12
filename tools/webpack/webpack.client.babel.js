@@ -4,7 +4,7 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 // const StyleLintPlugin = require('stylelint-webpack-plugin');
-const { CSSModules, eslint, vendor } = require('./config');
+const { CSSModules, vendor } = require('./config');
 
 const nodeEnv = process.env.NODE_ENV || 'development';
 const isDev = nodeEnv !== 'production';
@@ -25,7 +25,6 @@ const getPlugins = () => {
     new webpack.LoaderOptionsPlugin({
       options: {
         // Javascript lint
-        eslint: { failOnError: eslint },
         context: '/',   // Required for the sourceMap of css/sass loader
         debug: isDev,
         minimize: !isDev,
@@ -117,8 +116,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         enforce: 'pre',
-        exclude: /node_modules/,
-        loader: 'eslint',
+        exclude: /node_modules/
       },
       {
         test: /\.jsx?$/,
