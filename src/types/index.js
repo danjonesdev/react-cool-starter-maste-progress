@@ -2,7 +2,7 @@
 
 import type { Store as ReduxStore } from 'redux';
 
-export type Home = {
+export type UserListFetch = {
   readyStatus: string,
   err: any,
   list: Array<Object>,
@@ -17,7 +17,7 @@ export type UserInfo = {
 };
 
 export type Reducer = {
-  home: Home,
+  userListFetch: UserListFetch,
   userInfo: UserInfo,
   router: any,
 };
