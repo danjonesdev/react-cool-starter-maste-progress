@@ -18,7 +18,7 @@ export class UserList extends PureComponent {
     return (
       <div className={s.UserList}>
         <div className={b.container}>
-          <h4>User List</h4>
+          <h4>Popular this week</h4>
           <div className={b.row}>
             {this.props.list.map(user => (
               <div className={b['col-sm-4']} key={user.id}>
