@@ -26,6 +26,7 @@ export class UserList extends PureComponent {
                   <img src="https://qph.ec.quoracdn.net/main-thumb-t-7187-200-WTlZyW922iBQFzeQKR99N4bZ4w44Drp2.jpeg" alt="" />
                 </div>
                   <p className={s.title}>{user.title}</p>
+                  <p className={s.date}>{user.date}</p>
               </Link>
             </div>
         ))}
