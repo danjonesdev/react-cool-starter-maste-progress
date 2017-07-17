@@ -119,6 +119,96 @@ app.get('*', (req, res) => {
     });
 });
 
+
+
+
+
+
+
+
+
+
+
+
+//---------------------------------------------------------------------------------
+
+//GET ARTICLES
+app.get('/api/articleList', (req, res) => {
+
+  console.log('yoyoyo');
+    var indexLimit = parseInt(req.query.indexLimit, 10);
+    var articleId = req.query.articleId
+    var articles = [];
+
+    db.collection('articles')
+        .find()
+        .sort("dateAdded", -1)
+        .limit(indexLimit)
+        .toArray()
+        .then(result => {
+            articles = articles.concat(result);
+        }).then(() => {
+            res.send(articles);
+        }).catch(e => {
+            console.error(e);
+        });
+});
+
+//GET ARTICLE
+app.get('/api/article', (req, res) => {
+
+    var ObjectId = require('mongodb').ObjectID;
+    var articleId = req.query.id
+    var articles;
+
+    db.collection('articles')
+        .findOne({
+            "_id": ObjectId(articleId)
+        })
+        .then(result => {
+            articles = result;
+        }).then(() => {
+            res.send(articles);
+        }).catch(e => {
+            console.error(e);
+        });
+
+});
+
+//------------------------------------
+
+
+//connect to mongo db
+var db
+const MongoClient = require('mongodb').MongoClient
+MongoClient.connect('mongodb://dannyjones360:test@ds123930.mlab.com:23930/halftimefront', (err, database) => {
+    if (err) return console.log(err);
+    db = database
+    console.log('db connected');
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 if (port) {
   app.listen(port, host, (err) => {
     if (err) console.error(`==> 😭  OMG!!! ${err}`);

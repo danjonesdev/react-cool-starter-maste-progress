@@ -12,6 +12,7 @@ export const USERS_REQUESTING = 'USERS_REQUESTING';
 export const USERS_FAILURE = 'USERS_FAILURE';
 export const USERS_SUCCESS = 'USERS_SUCCESS';
 
+// export const API_URL = '/api/articleList';
 export const API_URL = 'https://api.myjson.com/bins/krm5r';
 
 // Export this for unit testing more easily
