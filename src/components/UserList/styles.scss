@@ -1,28 +1,32 @@
 @import '../../theme/variables';
 
 .UserList {
-
-  ul {
-    padding-left: 17px;
-
-    li {
-      margin-bottom: 0.5em;
+  .grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  @media all and (max-width: 880px) {
+    .grid {
+      max-width: 800px;
     }
   }
-  /* The animation code */
-  @keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
 
-    100% {
-      opacity: 1;
-    }
-  }
-  /* The element to apply the animation to */
   .card {
-    background: #fff;
-    height: 240px;
+    width: 100%;
+    height: 100%;
+    background: gray;
+    position: relative;
+  }
+
+  .col {
+    width: 250px;
+    height: 250px;
+    display: inline-block;
+    padding: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
     opacity: 0;
     animation: fadeIn 0.5s ease both;
     animation-delay: 0.5s;
@@ -36,26 +40,60 @@
     }
 
     &:nth-child(4) {
-      animation-delay: 1s;
+      animation-delay: 0.5s;
     }
 
     &:nth-child(5) {
-      animation-delay: 1s;
+    animation-delay: 0.5s;
     }
 
     &:nth-child(6) {
-      animation-delay: 1s;
+    animation-delay: 0.5s;
+    }
+  }
+
+
+  @media all and (max-width: 1200px) {
+    .col {
+      width: 200px;
+      height: 200px;
+    }
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
     }
 
-    &-img-cont {
-      width: 100%;
-      height: 200px;
-      overflow: hidden;
+    100% {
+      opacity: 1;
     }
+  }
 
-    &-img {
-      width: 100%;
+  .col-lg {
+    width: 300px;
+    height: 300px;
+    display: inline-block;
+    padding: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  @media all and (max-width: 800px) {
+    .col-lg {
+      width: 200px;
       height: 200px;
+    }
+  }
+
+  .img {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
       transition: all 1s ease;
 
@@ -65,21 +103,14 @@
         filter: progid:DXImageTransform.Microsoft.Matrix(M11=1.5, M12=0, M21=0, M22=1.5, SizingMethod=  'auto expand');
       }
     }
+  }
 
-    &-link {
-      text-decoration: none;
-    }
-
-    &-title {
-      color: #000;
-      padding-left: 8px;
-      padding-right: 10px;
-      padding-bottom: 5px;
-      line-height: 15px;
-      height: auto;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
+  .title {
+    color: #000;
+    width: 100%;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }

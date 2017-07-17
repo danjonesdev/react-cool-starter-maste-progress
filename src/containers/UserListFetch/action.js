@@ -12,7 +12,7 @@ export const USERS_REQUESTING = 'USERS_REQUESTING';
 export const USERS_FAILURE = 'USERS_FAILURE';
 export const USERS_SUCCESS = 'USERS_SUCCESS';
 
-export const API_URL = 'https://api.myjson.com/bins/13hbv3';
+export const API_URL = 'https://api.myjson.com/bins/krm5r';
 
 // Export this for unit testing more easily
 export const fetchUsers = (axios: any, URL: string = API_URL): ThunkAction =>

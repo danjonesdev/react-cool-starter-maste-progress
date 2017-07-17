@@ -16,25 +16,21 @@ export class UserList extends PureComponent {
 
   render() {
     return (
-      <div className={s.UserList}>
-        <div className={b.container}>
-          <h4>Popular this week</h4>
-          <div className={b.row}>
-            {this.props.list.map(user => (
-              <div className={b['col-sm-4']} key={user.id}>
-                <div className={s.card} key={user.id}>
-                  <Link className={s['card-link']} to={`/UserInfo/${user.id}`}>
-                    <div className={s['card-img-cont']}>
-                      <img className={s['card-img']} src="https://qph.ec.quoracdn.net/main-thumb-t-7187-200-WTlZyW922iBQFzeQKR99N4bZ4w44Drp2.jpeg" alt="hello" />
-                    </div>
-                    <p className={s['card-title']}>{user.title}</p>
-                  </Link>
+    <div className={s.UserList}>
+      <h4>Popular this week</h4>
+      <div className={s.grid}>
+        {this.props.list.map(user => (
+            <div className={s.col}>
+              <Link className={s.card} to={`/UserInfo/${user.id}`}>
+                <div className={s.img}>
+                  <img src="https://qph.ec.quoracdn.net/main-thumb-t-7187-200-WTlZyW922iBQFzeQKR99N4bZ4w44Drp2.jpeg" alt="" />
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
+                  <p className={s.title}>{user.title}</p>
+              </Link>
+            </div>
+        ))}
       </div>
+    </div>
     );
   }
 }
