@@ -21,12 +21,13 @@ export class UserList extends PureComponent {
       <div className={s.grid}>
         {this.props.list.map(user => (
             <div className={s.col}>
-              <Link className={s.card} to={`/UserInfo/${user.id}`}>
-                <div className={s.img}>
-                  <img src="https://qph.ec.quoracdn.net/main-thumb-t-7187-200-WTlZyW922iBQFzeQKR99N4bZ4w44Drp2.jpeg" alt="" />
-                </div>
+              <Link to={`/UserInfo/${user.id}`}>
+                <div className={s.card}>
+                  <div className={s.img}>
+                    <img src="https://qph.ec.quoracdn.net/main-thumb-t-7187-200-WTlZyW922iBQFzeQKR99N4bZ4w44Drp2.jpeg" alt="" />
+                  </div>
                   <p className={s.title}>{user.title}</p>
-                  <p className={s.date}>{user.date}</p>
+                  </div>
               </Link>
             </div>
         ))}
