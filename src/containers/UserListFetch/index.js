@@ -8,6 +8,7 @@ import type { Connector } from 'react-redux';
 import * as action from './action';
 import type { UserListFetch as UserListFetchType, Dispatch, Reducer } from '../../types';
 import UserList from '../../components/UserList';
+import Loading from '../../containers/Loading';
 import styles from './styles.scss';
 
 type Props = {
@@ -36,7 +37,7 @@ export class UserListFetch extends PureComponent {
 
     if (!userListFetch.readyStatus || userListFetch.readyStatus === action.USERS_INVALID ||
       userListFetch.readyStatus === action.USERS_REQUESTING) {
-      return <p>Loading...</p>;
+      return <Loading />
     }
 
     if (userListFetch.readyStatus === action.USERS_FAILURE) {
