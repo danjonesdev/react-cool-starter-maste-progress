@@ -1,9 +1,9 @@
 /* @flow */
 
 import type { Dispatch } from './types';
-import { fetchUserIfNeeded } from './containers/UserInfo/action';
+import { fetchArticleIfNeeded } from './containers/ArticleInfo/action';
 import HomePage from './containers/Home';
-import UserInfoPage from './containers/UserInfo';
+import ArticleInfoPage from './containers/ArticleInfo';
 import NotFoundPage from './containers/NotFound';
 
 export default [
@@ -13,10 +13,10 @@ export default [
     component: HomePage,  // Add your route here
   },
   {
-    path: '/UserInfo/:id',
-    component: UserInfoPage,
+    path: '/ArticleInfo/:id',
+    component: ArticleInfoPage,
     loadData: (dispatch: Dispatch, params: Object) => Promise.all([
-      dispatch(fetchUserIfNeeded(params.id)),
+      dispatch(fetchArticleIfNeeded(params.id)),
     ]),
   },
   {

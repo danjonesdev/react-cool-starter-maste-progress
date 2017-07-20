@@ -56,13 +56,13 @@ const Html = ({ store, htmlContent }: Props) => {
                 // $FlowFixMe: It's not an issue
                 require('../containers/Home/styles.scss')._style +
                 // $FlowFixMe: It's not an issue
-                require('../containers/UserInfo/styles.scss')._style +
+                require('../containers/ArticleInfo/styles.scss')._style +
                 // $FlowFixMe: It's not an issue
                 require('../containers/NotFound/styles.scss')._style +
                 // $FlowFixMe: It's not an issue
-                require('../components/UserList/styles.scss')._style +
+                require('../components/ArticleList/styles.scss')._style +
                 // $FlowFixMe: It's not an issue
-                require('../components/UserCard/styles.scss')._style,
+                require('../components/ArticleCard/styles.scss')._style,
               }}
             />
             : null

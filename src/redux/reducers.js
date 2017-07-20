@@ -3,11 +3,11 @@
 import { combineReducers } from 'redux';
 import { routerReducer as router } from 'react-router-redux';
 
-import userListFetch from '../containers/UserListFetch/reducer';
-import userInfo from '../containers/UserInfo/reducer';
+import articleListFetch from '../containers/ArticleListFetch/reducer';
+import articleInfo from '../containers/ArticleInfo/reducer';
 
 export default combineReducers({
-  userListFetch,
-  userInfo,
+  articleListFetch,
+  articleInfo,
   router,
 });
