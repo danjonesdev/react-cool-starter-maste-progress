@@ -21,15 +21,13 @@ export class Home extends PureComponent {
     }
   };
 
-  renderUserList = () => {
-    return <UserListFetch indexLimit="8" />;
-  }
 
   render() {
     return (
       <div className={styles.Home}>
         <Helmet title="Home" />
-        {this.renderUserList()}
+          <UserListFetch indexLimit="2" type="square-small" />;
+          <UserListFetch indexLimit="8" type="square-small" />;
       </div>
     );
   }

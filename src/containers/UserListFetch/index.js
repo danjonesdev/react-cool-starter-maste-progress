@@ -44,7 +44,13 @@ export class UserListFetch extends PureComponent {
       return <p>Oops, Failed to load list!</p>;
     }
 
-    return <UserList list={userListFetch.list} />;
+    if (this.props.type === "square-small") {
+        return <UserList list={userListFetch.list} />;
+    }
+
+    if (this.props.type === "square-featured") {
+        return <UserList list={userListFetch.list} />;
+    }
   }
 
   render() {
