@@ -13,7 +13,7 @@ import styles from './styles.scss';
 
 type Props = {
   userListFetch: UserListFetchType,
-  fetchUsersIfNeeded: () => void,
+  fetchUsersIfNeeded: (indexLimit: string) => void,
 };
 
 // Export this for unit testing more easily
@@ -29,7 +29,7 @@ export class UserListFetch extends PureComponent {
   };
 
   componentDidMount() {
-    this.props.fetchUsersIfNeeded();
+    this.props.fetchUsersIfNeeded(this.props.indexLimit);
   }
 
   renderUserList = () => {
@@ -59,7 +59,7 @@ export class UserListFetch extends PureComponent {
 const connector: Connector<{}, Props> = connect(
   ({ userListFetch }: Reducer) => ({ userListFetch }),
   (dispatch: Dispatch) => ({
-    fetchUsersIfNeeded: () => dispatch(action.fetchUsersIfNeeded()),
+    fetchUsersIfNeeded: (indexLimit: string) => dispatch(action.fetchUsersIfNeeded(indexLimit)),
   }),
 );
 

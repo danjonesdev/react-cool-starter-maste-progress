@@ -52,6 +52,75 @@ if (__DEV__) {
   app.use(require('webpack-hot-middleware')(compiler));
 }
 
+
+
+
+
+
+//---------------------------------------------------------------------------------
+
+//GET ARTICLES
+app.get('/api/articleList', (req, res) => {
+
+
+    var indexLimit = parseInt(req.query.indexLimit, 10);
+    var articles = [];
+
+    console.log(indexLimit);
+
+    db.collection('articles')
+        .find()
+        .sort("date", -1)
+        .limit(indexLimit)
+        .toArray()
+        .then(result => {
+            articles = articles.concat(result);
+        }).then(() => {
+            res.send(articles);
+        }).catch(e => {
+            console.error(e);
+        });
+});
+
+//GET ARTICLE
+app.get('/api/article', (req, res) => {
+
+    var ObjectId = require('mongodb').ObjectID;
+    var articleId = req.query.id
+    var articles;
+
+    db.collection('articles')
+        .findOne({
+            "_id": ObjectId(articleId)
+        })
+        .then(result => {
+            articles = result;
+        }).then(() => {
+            res.send(articles);
+        }).catch(e => {
+            console.error(e);
+        });
+
+});
+
+//------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Register server-side rendering middleware
 app.get('*', (req, res) => {
   if (__DEV__) webpackIsomorphicTools.refresh();
@@ -126,58 +195,6 @@ app.get('*', (req, res) => {
 
 
 
-
-
-
-
-//---------------------------------------------------------------------------------
-
-//GET ARTICLES
-app.get('/api/articleList', (req, res) => {
-
-  console.log('yoyoyo');
-    var indexLimit = parseInt(req.query.indexLimit, 10);
-    var articleId = req.query.articleId
-    var articles = [];
-
-    db.collection('articles')
-        .find()
-        .sort("dateAdded", -1)
-        .limit(indexLimit)
-        .toArray()
-        .then(result => {
-            articles = articles.concat(result);
-        }).then(() => {
-            res.send(articles);
-        }).catch(e => {
-            console.error(e);
-        });
-});
-
-//GET ARTICLE
-app.get('/api/article', (req, res) => {
-
-    var ObjectId = require('mongodb').ObjectID;
-    var articleId = req.query.id
-    var articles;
-
-    db.collection('articles')
-        .findOne({
-            "_id": ObjectId(articleId)
-        })
-        .then(result => {
-            articles = result;
-        }).then(() => {
-            res.send(articles);
-        }).catch(e => {
-            console.error(e);
-        });
-
-});
-
-//------------------------------------
-
-
 //connect to mongo db
 var db
 const MongoClient = require('mongodb').MongoClient
@@ -186,22 +203,6 @@ MongoClient.connect('mongodb://dannyjones360:test@ds123930.mlab.com:23930/halfti
     db = database
     console.log('db connected');
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

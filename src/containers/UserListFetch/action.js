@@ -12,15 +12,18 @@ export const USERS_REQUESTING = 'USERS_REQUESTING';
 export const USERS_FAILURE = 'USERS_FAILURE';
 export const USERS_SUCCESS = 'USERS_SUCCESS';
 
-// export const API_URL = '/api/articleList';
-export const API_URL = 'https://api.myjson.com/bins/krm5r';
+export const API_URL = '/api/articleList';
+//export const API_URL = 'https://api.myjson.com/bins/krm5r';
 
 // Export this for unit testing more easily
-export const fetchUsers = (axios: any, URL: string = API_URL): ThunkAction =>
+export const fetchUsers = (indexLimit, axios: any, URL: string = API_URL): ThunkAction =>
   (dispatch: Dispatch) => {
     dispatch({ type: USERS_REQUESTING });
-
-    return axios.get(URL)
+    return axios.get(URL, {
+        params: {
+          indexLimit: indexLimit
+        }
+      })
       .then((res) => {
         dispatch({ type: USERS_SUCCESS, data: res.data });
       })
@@ -44,12 +47,12 @@ const shouldFetchUsers = (state: Reducer): boolean => {
 };
 
 /* istanbul ignore next */
-export const fetchUsersIfNeeded = (): ThunkAction =>
+export const fetchUsersIfNeeded = (indexLimit): ThunkAction =>
   (dispatch: Dispatch, getState: GetState, axios: any) => {
     /* istanbul ignore next */
     if (shouldFetchUsers(getState())) {
       /* istanbul ignore next */
-      return dispatch(fetchUsers(axios));
+      return dispatch(fetchUsers(indexLimit, axios));
     }
 
     /* istanbul ignore next */

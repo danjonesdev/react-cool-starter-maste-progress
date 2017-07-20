@@ -20,7 +20,7 @@ export class UserList extends PureComponent {
       <h4>Popular this week</h4>
       <div className={s.grid}>
         {this.props.list.map(user => (
-            <div className={s.col}>
+            <div key={user.id} className={s.col}>
               <Link to={`/UserInfo/${user.id}`}>
                 <div className={s.card}>
                   <div className={s.img}>

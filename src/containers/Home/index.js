@@ -22,7 +22,7 @@ export class Home extends PureComponent {
   };
 
   renderUserList = () => {
-    return <UserListFetch />;
+    return <UserListFetch indexLimit="8" />;
   }
 
   render() {
