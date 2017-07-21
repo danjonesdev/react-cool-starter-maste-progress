@@ -8,6 +8,12 @@ export type ArticlesLatestFetch = {
   list: Array<Object>,
 };
 
+export type ArticlesFeaturedFetch = {
+  readyStatus: string,
+  err: any,
+  list: Array<Object>,
+};
+
 export type ArticleInfo = {
   [articleId: string]: {
     readyStatus: string,
@@ -18,6 +24,7 @@ export type ArticleInfo = {
 
 export type Reducer = {
   articlesLatestFetch: ArticlesLatestFetch,
+  articlesLatestFetch: ArticlesFeaturedFetch,
   articleInfo: ArticleInfo,
   router: any,
 };
@@ -26,6 +33,9 @@ export type Action =
   { type: 'ARTICLES_LATEST_REQUESTING' } |
   { type: 'ARTICLES_LATEST_SUCCESS', data: Array<Object> } |
   { type: 'ARTICLES_LATEST_FAILURE', err: any } |
+  { type: 'ARTICLES_FEATURED_REQUESTING' } |
+  { type: 'ARTICLES_FEATURED_SUCCESS', data: Array<Object> } |
+  { type: 'ARTICLES_FEATURED_FAILURE', err: any } |
   { type: 'ARTICLE_REQUESTING', articleId: string } |
   { type: 'ARTICLE_SUCCESS', articleId: string, data: Object } |
   { type: 'ARTICLE_FAILURE', articleId: string, err: any };

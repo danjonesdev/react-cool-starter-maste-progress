@@ -60,7 +60,7 @@ if (__DEV__) {
 //---------------------------------------------------------------------------------
 
 //GET ARTICLES_LATEST
-app.get('/api/articlesLatest', (req, res) => {
+app.get('/api/articles', (req, res) => {
 
 
     var indexLimit = parseInt(req.query.indexLimit, 10);
