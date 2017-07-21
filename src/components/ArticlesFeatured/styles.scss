@@ -32,16 +32,24 @@
   }
 
   .collg {
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    height: 400px;
     display: inline-block;
     padding: 10px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
   }
+
   @media all and (max-width: 800px) {
-    .col-lg {
+    .collg {
+      width: 300px;
+      height: 300px;
+    }
+  }
+
+  @media all and (max-width: 800px) {
+    .collg {
       width: 200px;
       height: 200px;
     }
