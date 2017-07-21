@@ -2,14 +2,14 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { StaticRouter } from 'react-router-dom';
 
-import ArticleList from '../index';
+import ArticlesLatest from '../index';
 
-describe('<ArticleList />', () => {
+describe('<ArticlesLatest />', () => {
   test('renders', () => {
     const mockData = [{ id: '1', name: 'Welly' }];
     const tree = renderer.create(
       <StaticRouter location={''} context={{}}>
-        <ArticleList list={mockData} />
+        <ArticlesLatest list={mockData} />
       </StaticRouter>,
     ).toJSON();
 

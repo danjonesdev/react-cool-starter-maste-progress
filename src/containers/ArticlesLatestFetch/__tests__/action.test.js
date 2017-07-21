@@ -6,9 +6,9 @@ import nock from 'nock';
 
 import {
   fetchArticles,
-  ARTICLES_REQUESTING,
-  ARTICLES_FAILURE,
-  ARTICLES_SUCCESS,
+  ARTICLES_LATEST_REQUESTING,
+  ARTICLES_LATEST_FAILURE,
+  ARTICLES_LATEST_SUCCESS,
 } from '../action';
 
 const host = 'http://localhost';
@@ -24,14 +24,14 @@ describe('fetch articles data', () => {
 
   afterEach(() => { nock.disableNetConnect(); });
 
-  test('creates ARTICLES_SUCCESS when fetching articles has been done', () => {
+  test('creates ARTICLES_LATEST_SUCCESS when fetching articles has been done', () => {
     nock(host)
       .get('/test')
       .reply(200, response);
 
     const expectedActions = [
-      { type: ARTICLES_REQUESTING },
-      { type: ARTICLES_SUCCESS, data: response },
+      { type: ARTICLES_LATEST_REQUESTING },
+      { type: ARTICLES_LATEST_SUCCESS, data: response },
     ];
     const store = mockStore({ list: null });
 
@@ -39,14 +39,14 @@ describe('fetch articles data', () => {
       .then(() => { expect(store.getActions()).toEqual(expectedActions); });
   });
 
-  test('creates ARTICLES_FAILURE when fail to fetch articles', () => {
+  test('creates ARTICLES_LATEST_FAILURE when fail to fetch articles', () => {
     nock(host)
       .get('/test')
       .replyWithError(errorMessage);
 
     const expectedActions = [
-      { type: ARTICLES_REQUESTING },
-      { type: ARTICLES_FAILURE, err: new Error([errorMessage]) },
+      { type: ARTICLES_LATEST_REQUESTING },
+      { type: ARTICLES_LATEST_FAILURE, err: new Error([errorMessage]) },
     ];
     const store = mockStore({ err: null });
 

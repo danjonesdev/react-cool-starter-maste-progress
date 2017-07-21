@@ -1,9 +1,9 @@
 import reducer from '../reducer';
 import {
-  ARTICLES_INVALID,
-  ARTICLES_REQUESTING,
-  ARTICLES_FAILURE,
-  ARTICLES_SUCCESS,
+  ARTICLES_LATEST_INVALID,
+  ARTICLES_LATEST_REQUESTING,
+  ARTICLES_LATEST_FAILURE,
+  ARTICLES_LATEST_SUCCESS,
 } from '../action';
 
 describe('articles data reducer', () => {
@@ -11,49 +11,49 @@ describe('articles data reducer', () => {
     expect(
       reducer(undefined, {}),
     ).toEqual({
-      readyStatus: ARTICLES_INVALID,
+      readyStatus: ARTICLES_LATEST_INVALID,
       err: null,
       list: [],
     });
   });
 
-  test('should handle ARTICLES_REQUESTING', () => {
+  test('should handle ARTICLES_LATEST_REQUESTING', () => {
     expect(
       reducer(undefined, {
-        type: ARTICLES_REQUESTING,
+        type: ARTICLES_LATEST_REQUESTING,
         err: null,
         data: [],
       }),
     ).toEqual({
-      readyStatus: ARTICLES_REQUESTING,
+      readyStatus: ARTICLES_LATEST_REQUESTING,
       err: null,
       list: [],
     });
   });
 
-  test('should handle ARTICLES_FAILURE', () => {
+  test('should handle ARTICLES_LATEST_FAILURE', () => {
     expect(
       reducer(undefined, {
-        type: ARTICLES_FAILURE,
+        type: ARTICLES_LATEST_FAILURE,
         err: 'Oops! Something went wrong.',
         data: [],
       }),
     ).toEqual({
-      readyStatus: ARTICLES_FAILURE,
+      readyStatus: ARTICLES_LATEST_FAILURE,
       err: 'Oops! Something went wrong.',
       list: [],
     });
   });
 
-  test('should handle ARTICLES_SUCCESS', () => {
+  test('should handle ARTICLES_LATEST_SUCCESS', () => {
     expect(
       reducer(undefined, {
-        type: ARTICLES_SUCCESS,
+        type: ARTICLES_LATEST_SUCCESS,
         err: null,
         data: [{ id: '1', name: 'Welly' }],
       }),
     ).toEqual({
-      readyStatus: ARTICLES_SUCCESS,
+      readyStatus: ARTICLES_LATEST_SUCCESS,
       err: null,
       list: [{ id: '1', name: 'Welly' }],
     });

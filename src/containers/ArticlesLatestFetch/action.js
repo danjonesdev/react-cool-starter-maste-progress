@@ -7,28 +7,28 @@ import type {
   Reducer,
 } from '../../types';
 
-export const ARTICLES_INVALID = 'ARTICLES_INVALID';
-export const ARTICLES_REQUESTING = 'ARTICLES_REQUESTING';
-export const ARTICLES_FAILURE = 'ARTICLES_FAILURE';
-export const ARTICLES_SUCCESS = 'ARTICLES_SUCCESS';
+export const ARTICLES_LATEST_INVALID = 'ARTICLES_LATEST_INVALID';
+export const ARTICLES_LATEST_REQUESTING = 'ARTICLES_LATEST_REQUESTING';
+export const ARTICLES_LATEST_FAILURE = 'ARTICLES_LATEST_FAILURE';
+export const ARTICLES_LATEST_SUCCESS = 'ARTICLES_LATEST_SUCCESS';
 
-export const API_URL = '/api/articleList';
+export const API_URL = '/api/articlesLatest';
 //export const API_URL = 'https://api.myjson.com/bins/krm5r';
 
 // Export this for unit testing more easily
 export const fetchArticles = (indexLimit, axios: any, URL: string = API_URL): ThunkAction =>
   (dispatch: Dispatch) => {
-    dispatch({ type: ARTICLES_REQUESTING });
+    dispatch({ type: ARTICLES_LATEST_REQUESTING });
     return axios.get(URL, {
         params: {
           indexLimit: indexLimit
         }
       })
       .then((res) => {
-        dispatch({ type: ARTICLES_SUCCESS, data: res.data });
+        dispatch({ type: ARTICLES_LATEST_SUCCESS, data: res.data });
       })
       .catch((err) => {
-        dispatch({ type: ARTICLES_FAILURE, err });
+        dispatch({ type: ARTICLES_LATEST_FAILURE, err });
       });
   };
 
@@ -39,9 +39,9 @@ const shouldFetchArticles = (state: Reducer): boolean => {
   // or your reducer hot reloading won't updated on the view
   if (__DEV__) return true;
 
-  const articleListFetch = state.articleListFetch;
+  const articlesLatestFetch = state.articlesLatestFetch;
 
-  if (articleListFetch.readyStatus === ARTICLES_SUCCESS) return false; // Preventing double fetching data
+  if (articlesLatestFetch.readyStatus === ARTICLES_LATEST_SUCCESS) return false; // Preventing double fetching data
 
   return true;
 };

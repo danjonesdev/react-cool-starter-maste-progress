@@ -5,18 +5,18 @@ import s from './styles.scss';
 
 type Props = { list: Object };
 
-export class ArticleList extends PureComponent {
+export class ArticlesLatest extends PureComponent {
   props: Props;
 
   static defaultProps: {
-    ArticleList: {
+    ArticlesLatest: {
       test: null,
     }
   };
 
   render() {
     return (
-    <div className={s.ArticleList}>
+    <div className={s.ArticlesLatest}>
       <h4>Popular this week</h4>
       <div className={s.grid}>
         {this.props.list.map(article => (
@@ -37,11 +37,11 @@ export class ArticleList extends PureComponent {
   }
 }
 
-ArticleList.defaultProps = {
+ArticlesLatest.defaultProps = {
   list: {
     id: '',
     title: '',
   },
 };
 
-export default ArticleList;
+export default ArticlesLatest;

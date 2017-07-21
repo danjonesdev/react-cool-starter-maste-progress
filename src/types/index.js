@@ -2,7 +2,7 @@
 
 import type { Store as ReduxStore } from 'redux';
 
-export type ArticleListFetch = {
+export type ArticlesLatestFetch = {
   readyStatus: string,
   err: any,
   list: Array<Object>,
@@ -17,15 +17,15 @@ export type ArticleInfo = {
 };
 
 export type Reducer = {
-  articleListFetch: ArticleListFetch,
+  articlesLatestFetch: ArticlesLatestFetch,
   articleInfo: ArticleInfo,
   router: any,
 };
 
 export type Action =
-  { type: 'ARTICLES_REQUESTING' } |
-  { type: 'ARTICLES_SUCCESS', data: Array<Object> } |
-  { type: 'ARTICLES_FAILURE', err: any } |
+  { type: 'ARTICLES_LATEST_REQUESTING' } |
+  { type: 'ARTICLES_LATEST_SUCCESS', data: Array<Object> } |
+  { type: 'ARTICLES_LATEST_FAILURE', err: any } |
   { type: 'ARTICLE_REQUESTING', articleId: string } |
   { type: 'ARTICLE_SUCCESS', articleId: string, data: Object } |
   { type: 'ARTICLE_FAILURE', articleId: string, err: any };

@@ -10,7 +10,7 @@ exports[`<Home /> renders an error if loading failed 1`] = `
 </div>
 `;
 
-exports[`<Home /> renders the <ArticleList /> if loading was successful 1`] = `
+exports[`<Home /> renders the <ArticlesLatest /> if loading was successful 1`] = `
 <div
   className={undefined}
 >

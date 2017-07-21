@@ -6,23 +6,23 @@ import { connect } from 'react-redux';
 import type { Connector } from 'react-redux';
 
 import * as action from './action';
-import type { ArticleListFetch as ArticleListFetchType, Dispatch, Reducer } from '../../types';
-import ArticleList from '../../components/ArticleList';
+import type { ArticlesLatestFetch as ArticlesLatestFetchType, Dispatch, Reducer } from '../../types';
+import ArticlesLatest from '../../components/ArticlesLatest';
 import Loading from '../../containers/Loading';
 import styles from './styles.scss';
 
 type Props = {
-  articleListFetch: ArticleListFetchType,
+  articlesLatestFetch: ArticlesLatestFetchType,
   fetchArticlesIfNeeded: (indexLimit: string) => void,
 };
 
 // Export this for unit testing more easily
-export class ArticleListFetch extends PureComponent {
+export class ArticlesLatestFetch extends PureComponent {
   props: Props;
 
   static defaultProps: {
-    articleListFetch: {
-      readyStatus: 'ARTICLES_INVALID',
+    articlesLatestFetch: {
+      readyStatus: 'ARTICLES_LATEST_INVALID',
       list: null,
     },
     fetchArticlesIfNeeded: () => {},
@@ -32,41 +32,41 @@ export class ArticleListFetch extends PureComponent {
     this.props.fetchArticlesIfNeeded(this.props.indexLimit);
   }
 
-  renderArticleList = () => {
-    const { articleListFetch } = this.props;
+  renderArticlesLatest = () => {
+    const { articlesLatestFetch } = this.props;
 
-    if (!articleListFetch.readyStatus || articleListFetch.readyStatus === action.ARTICLES_INVALID ||
-      articleListFetch.readyStatus === action.ARTICLES_REQUESTING) {
+    if (!articlesLatestFetch.readyStatus || articlesLatestFetch.readyStatus === action.ARTICLES_LATEST_INVALID ||
+      articlesLatestFetch.readyStatus === action.ARTICLES_LATEST_REQUESTING) {
       return <Loading />
     }
 
-    if (articleListFetch.readyStatus === action.ARTICLES_FAILURE) {
+    if (articlesLatestFetch.readyStatus === action.ARTICLES_LATEST_FAILURE) {
       return <p>Oops, Failed to load list!</p>;
     }
 
     if (this.props.type === "square-small") {
-        return <ArticleList list={articleListFetch.list} />;
+        return <ArticlesLatest list={articlesLatestFetch.list} />;
     }
 
     if (this.props.type === "square-featured") {
-        return <ArticleList list={articleListFetch.list} />;
+        return <ArticlesLatest list={articlesLatestFetch.list} />;
     }
   }
 
   render() {
     return (
-      <div className={styles.ArticleListFetch}>
-        {this.renderArticleList()}
+      <div className={styles.ArticlesLatestFetch}>
+        {this.renderArticlesLatest()}
       </div>
     );
   }
 }
 
 const connector: Connector<{}, Props> = connect(
-  ({ articleListFetch }: Reducer) => ({ articleListFetch }),
+  ({ articlesLatestFetch }: Reducer) => ({ articlesLatestFetch }),
   (dispatch: Dispatch) => ({
     fetchArticlesIfNeeded: (indexLimit: string) => dispatch(action.fetchArticlesIfNeeded(indexLimit)),
   }),
 );
 
-export default connector(ArticleListFetch);
+export default connector(ArticlesLatestFetch);

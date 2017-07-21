@@ -4,10 +4,10 @@ import { mount } from 'enzyme';
 import { StaticRouter } from 'react-router-dom';
 
 import {
-  ARTICLES_INVALID,
-  ARTICLES_REQUESTING,
-  ARTICLES_FAILURE,
-  ARTICLES_SUCCESS,
+  ARTICLES_LATEST_INVALID,
+  ARTICLES_LATEST_REQUESTING,
+  ARTICLES_LATEST_FAILURE,
+  ARTICLES_LATEST_SUCCESS,
 } from '../action';
 import { Home } from '../index';
 
@@ -38,7 +38,7 @@ describe('<Home />', () => {
 
   test('renders the loading status if data invalid', () => {
     const props = {
-      home: { readyStatus: ARTICLES_INVALID },
+      home: { readyStatus: ARTICLES_LATEST_INVALID },
     };
     const actions = { fetchArticlesIfNeeded: () => {} };
 
@@ -47,7 +47,7 @@ describe('<Home />', () => {
 
   test('renders the loading status if requesting data', () => {
     const props = {
-      home: { readyStatus: ARTICLES_REQUESTING },
+      home: { readyStatus: ARTICLES_LATEST_REQUESTING },
     };
     const actions = { fetchArticlesIfNeeded: () => {} };
 
@@ -56,17 +56,17 @@ describe('<Home />', () => {
 
   test('renders an error if loading failed', () => {
     const props = {
-      home: { readyStatus: ARTICLES_FAILURE },
+      home: { readyStatus: ARTICLES_LATEST_FAILURE },
     };
     const actions = { fetchArticlesIfNeeded: () => {} };
 
     expect(tree(props, actions)).toMatchSnapshot();
   });
 
-  test('renders the <ArticleList /> if loading was successful', () => {
+  test('renders the <ArticlesLatest /> if loading was successful', () => {
     const props = {
       home: {
-        readyStatus: ARTICLES_SUCCESS,
+        readyStatus: ARTICLES_LATEST_SUCCESS,
         list: [{ id: '1', name: 'Welly' }],
       },
     };

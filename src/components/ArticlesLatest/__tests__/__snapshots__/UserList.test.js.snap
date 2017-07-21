@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ArticleList /> renders 1`] = `
+exports[`<ArticlesLatest /> renders 1`] = `
 <div
   className={undefined}
 >
