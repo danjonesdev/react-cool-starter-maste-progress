@@ -14,6 +14,12 @@ export type ArticlesHotFetch = {
   list: Array<Object>,
 };
 
+export type ArtistsFeaturedFetch = {
+  readyStatus: string,
+  err: any,
+  list: Array<Object>,
+};
+
 export type ArticleInfo = {
   [articleId: string]: {
     readyStatus: string,
@@ -25,6 +31,7 @@ export type ArticleInfo = {
 export type Reducer = {
   articlesLatestFetch: ArticlesLatestFetch,
   articlesLatestFetch: ArticlesHotFetch,
+  artistsFeaturedFetch: ArtistsFeaturedFetch,
   articleInfo: ArticleInfo,
   router: any,
 };
@@ -36,6 +43,9 @@ export type Action =
   { type: 'ARTICLES_HOT_REQUESTING' } |
   { type: 'ARTICLES_HOT_SUCCESS', data: Array<Object> } |
   { type: 'ARTICLES_HOT_FAILURE', err: any } |
+  { type: 'ARTISTS_FEATURED_REQUESTING' } |
+  { type: 'ARTISTS_FEATURED_SUCCESS', data: Array<Object> } |
+  { type: 'ARTISTS_FEATUREDT_FAILURE', err: any } |
   { type: 'ARTICLE_REQUESTING', articleId: string } |
   { type: 'ARTICLE_SUCCESS', articleId: string, data: Object } |
   { type: 'ARTICLE_FAILURE', articleId: string, err: any };
