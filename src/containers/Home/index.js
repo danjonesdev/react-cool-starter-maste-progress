@@ -5,7 +5,7 @@ import React, { PureComponent } from 'react';
 import Helmet from 'react-helmet';
 
 import ArticlesLatestFetch from '../../containers/ArticlesLatestFetch';
-import ArticlesFeaturedFetch from '../../containers/ArticlesFeaturedFetch';
+import ArticlesHotFetch from '../../containers/ArticlesHotFetch';
 import styles from './styles.scss';
 
 type Props = {
@@ -27,7 +27,7 @@ export class Home extends PureComponent {
     return (
       <div className={styles.Home}>
         <Helmet title="Home" />
-          <ArticlesFeaturedFetch indexLimit="2" type="square-small" />;
+          <ArticlesHotFetch indexLimit="2" type="square-small" />;
           <ArticlesLatestFetch indexLimit="8" type="square-small" />;
       </div>
     );
