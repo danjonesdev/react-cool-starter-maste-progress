@@ -20,6 +20,7 @@
       "url": "www.blahblablah.com"
     }
   ],
+  "type": "news" / "artist",
   "date": "17/09/2017",
   "author": "Dan Jones (Aagentah)",
   "tags": [
